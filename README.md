@@ -8,8 +8,11 @@ Air pollution has become an deteriorating environmental problem in the past deca
 ## Installation
 
 Installation of airbox from GitHub is easy using the devtools package. <br>
-`require(devtools) <br>
-install_github(„cclljj/R-AirBox“)`<br>
+
+```
+require(devtools)
+install_github("cclljj/R-AirBox")
+```
 
 ## Description
 
