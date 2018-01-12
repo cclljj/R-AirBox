@@ -24,7 +24,7 @@ purr qboxplot magick geosphere ggmap<br>
 ## Code Example
 
 *To get sample data within the package<br>
-`mydata <- getData(data = "2017-01")`
+`mydata <- getData(data = "2017-01")` <br>
 *To know basic information of the dataset (including the states and the measurement length of online devices)<br>
 `mydata <- getData(data = "2017-01")<br>
 info(mydata = mydata)`<br>
@@ -33,13 +33,13 @@ info(mydata = mydata)`<br>
 week_day(mydata = mydata)`<br>
 *To draw a map indicating the neighbor devices within the selected distance of an entered device<br>
 `mydata <- getData(data = ‘2017-01’)<br>
-neighbor(mydata = mydata , id = '74DA388FF60A' , dist = 3000 , unit = 'm' , zoom = 13)`<br>
+neighbor(mydata = mydata, id = '74DA388FF60A', dist = 3000, unit = 'm', zoom = 13)`<br>
 *To download the animated distribution chart that shows the report of each airbox devices’ PM2.5 concentration from the past 24 hours from the internet. <br>
-`animation(w = 450 , h = 300)`<br>
+`animation(w = 450, h = 300)`<br>
 *To know whether there is a spatial anomaly in the entered device within the certain distance and at the certain time. <br>
-`spatial_anomaly(id = '74DA3895C392' , time = '2017-02-24 10:10:30' , dist = 3000 , unit = 'm' , zoom = 13)`<br>
+`spatial_anomaly(id = '74DA3895C392', time = '2017-02-24 10:10:30', dist = 3000 , unit = 'm', zoom = 13)`<br>
 *To know whether there is a temporal anomaly in the entered device in the certain time entered. <br>
-`temporal_anomaly(id = '74DA3895C392' , time = '2017-02-24 10:10:30')`<br>
+`temporal_anomaly(id = '74DA3895C392', time = '2017-02-24 10:10:30')`<br>
 
 ## License
 This package is licensed under MIT.
