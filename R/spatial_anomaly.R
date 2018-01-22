@@ -16,6 +16,31 @@ spatial_anomaly <- function(id = '74DA3895C392' , time = '2017-02-24 10:10:30' ,
   library(geosphere)
   library(ggmap)
 
+  #downloading data from internet database
+  if(exists("wholedata") == F){
+  URL <- 'https://pm25.lass-net.org/Rpackage/wholedata.rda'
+  User <- as.list(Sys.info())
+  username <- User$user
+
+  if(Sys.info()['sysname'] == 'Darwin')
+  {
+    pathway <- as.character(paste0('/Users/' , username , '/wholedata.rda'))
+    pathway0 <- as.character(paste0('/Users/' , username))
+    if(file.exists(pathway) == F){
+    download.file(URL , pathway , method = 'curl' )
+  }}
+
+  if(Sys.info()['sysname'] == 'Windows')
+  {
+    pathway <- as.character(paste0('C:/Users/' , username , '/wholedata.rda'))
+    pathway0 <- as.character(paste0('C:/Users/' , username))
+    if(file.exists(pathway) == F){
+    download.file(URL , pathway , mode = "wb")
+  }}
+
+  setwd(pathway0)
+  load(file = pathway)}
+
   #reset variables into suitable classes
   id <- as.character(id)
   time <- as.POSIXlt(time , format = '%Y-%m-%d %H:%M:%S')

@@ -5,7 +5,11 @@ getData <- function(data)
   {
     install.packages('purrr')
   }
-
+  #Check for necessary packages
+  if("lubridate" %in% rownames(installed.packages()) == FALSE)
+  {
+    install.packages('lubridate')
+  }
   #checking if the input is a proper character
   type <- class(data)
   if(type != 'character')
@@ -18,26 +22,41 @@ getData <- function(data)
     stop('data input should be a combine of year and month seperated by dash')
   }
 
-  #change factor to date format
-  wholedata$date <- as.POSIXlt(paste(wholedata$Date,wholedata$Time , sep = " "))
+  #downloading data from internet database
+  URL <- 'https://pm25.lass-net.org/Rpackage/wholedata.rda'
+  User <- as.list(Sys.info())
+  username <- User$user
+
+  if(Sys.info()['sysname'] == 'Darwin')
+  {
+    pathway <- as.character(paste0('/Users/' , username , '/wholedata.rda'))
+    pathway0 <- as.character(paste0('/Users/' , username))
+    download.file(URL , pathway , method = 'curl' )
+  }
+
+  if(Sys.info()['sysname'] == 'Windows')
+  {
+    pathway <- as.character(paste0('C:/Users/' , username , '/wholedata.rda'))
+    pathway0 <- as.character(paste0('C:/Users/' , username))
+    download.file(URL , pathway , mode = "wb")
+  }
+
+  setwd(pathway0)
+  load(file = pathway)
 
   #split character of input to year and month
   word <- strsplit(data , '-')
 
   datayear <- purrr::map_chr(word , 1)
   datamonth <- as.character(as.numeric(purrr::map_chr(word , 2)))
-  datadate <- wholedata$date
+  datadate <- wholedata$Date
 
 
-  wholedatayear <- as.character(datadate$year + 1900)
-  wholedatamonth <- as.character(datadate$mon +1)
+  wholedatayear <- as.character(lubridate::year(datadate))
+  wholedatamonth <- as.character(lubridate::month(datadate))
 
   result1 <- wholedata[which(wholedatayear == datayear &
                                wholedatamonth == datamonth) , ]
-
-  #output
-  result1$type <- NULL
-  result1$Time_1 <- NULL
   print(length(result1[ , 1]))
   return(result1)
 
