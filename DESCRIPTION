@@ -2,6 +2,7 @@ Package: airbox
 Type: Package
 Title: Analysing air quality data from airbox devices.
 Version: 0.1.0
+Supervisor: Hsieh hsin-hung <nellyshie@gmail.com>
 Author: Hsiao yun-chung;Tai yun-juo
 Maintainer: Hsiao yun-chung <yunchanghsiao@gmail.com> ; Tai yun-juo <cheryl31539@gmail.com>
 Description: airbox is designed to analyze air quality data from low cost air quality sensors mainly as “airbox.” The main pollution that could be analyzed is the particle matters having aerodynamic diameters less than 2.5 μm, aka, PM2.5. airbox can get sample data of airbox, analyze temporal distribution of PM2.5, find neighbor devices of selected device, discern anomaly within selected area, etc.  
