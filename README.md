@@ -31,6 +31,12 @@ purr qboxplot magick geosphere ggmap<br>
 ```
 mydata <- getData(data = "2017-01")
 ```
+* To get online lastest real time 5 minute air quality data <br>
+
+```
+getLatestData(Source = 2, raw.data = FALSE)
+```
+
 * To know basic information of the dataset (including the states and the measurement length of online devices) 
 
 ```
